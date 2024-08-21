@@ -45,5 +45,17 @@ class PostController extends Controller
         return $posts;
     }
     
-    public function update(Request $r)
+    public function update(Request $request){
+        $post = Post::where('id','>', 2)->update([
+            'title' => 'Novo título',
+            'content' => 'Novo conteúdo',
+            'author' => 'Elias',
+        ]);
+        return $post;
+    }
+
+    public function delete(Request $request){
+        $post = Post::find(4);
+        $post->delete();
+    }
 }
